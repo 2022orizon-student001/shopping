@@ -48,7 +48,7 @@ public class OrderDAO {
 		}
 		
 	
-		sql ="insert into cutomer Values(?,?,?,?)";
+		sql ="insert into customer Values(?,?,?,?,?)";
 		
 		try (
 				Connection con = DriverManager.getConnection(url, user, pass);
@@ -103,7 +103,7 @@ public class OrderDAO {
 				st.setInt(1, orderNumber);
 				st.setInt(2, item.getCode());
 				st.setInt(3, item.getQuantity());
-				st.executeLargeUpdate();
+				st.executeUpdate();
 				
 			}
 		return orderNumber;

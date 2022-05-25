@@ -17,22 +17,15 @@ import la.bean.CustomerBean;
 /**
  * Servlet implementation class CartServlet
  */
-@WebServlet(name = "OrderServlet", urlPatterns = { "/OrderServlet" })
-public class OrderServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public OrderServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+@WebServlet("/OrderServlet")
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+public class OrderServlet extends HttpServlet {
+	
+    
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
 		// TODO Auto-generated method stub
 		
 	HttpSession session = request.getSession(false);
