@@ -12,8 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import la.bean.CartBean;
 import la.bean.ItemBean;
-import la.Servlet.DAOException;
-import la.DAO.itemDAO;
+import la.DAO.DAOException;
+import la.DAO.ItemDAO;
 /**
  * Servlet implementation class CartServlet
  */

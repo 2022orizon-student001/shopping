@@ -1,4 +1,4 @@
-package la.dao;
+package la.DAO;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -10,7 +10,6 @@ import java.util.List;
 
 import la.bean.CategoryBean;
 import la.bean.ItemBean;
-import la.servlet.DAOException;
 
  public class ItemDAO {
 

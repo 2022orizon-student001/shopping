@@ -11,10 +11,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import la.bean.CartBean
+import la.bean.CartBean;
 import la.bean.CustomerBean;
-import la.dao.OrderDAO;
-import la.dao.DAOException;
+import la.DAO.OrderDAO;
+import la.DAO.DAOException;
 /**
  * Servlet implementation class CartServlet
  */
@@ -44,7 +44,7 @@ public class OrderServlet extends HttpServlet {
 		gotoPage(request,response, "?errInternl.jsp");
 		return;
 	}
-	CartBean cart =(CartBean)Session.getAttribute("cart");
+	CartBean cart =(CartBean) session.getAttribute("cart");
 	
 	if (cart ==null) {request.setAttribute("message", "正しく操作してください。");
 	gotoPage(request,response, "/errInternl.jsp");
@@ -60,7 +60,7 @@ public class OrderServlet extends HttpServlet {
 		else if (action.equals("confirm")){
 			
 		
-			CustomerBean bean = new .CustomerBean();
+			CustomerBean bean = new CustomerBean();
 			bean.setName(request.getParameter("name"));
 			bean.setAddress(request.getParameter("Address"));
 			bean.setTel(request.getParameter("Tel"));

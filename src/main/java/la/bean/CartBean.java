@@ -1,4 +1,4 @@
-package la.Cart;
+package la.bean;
 
 import java.util.ArrayList;
 import java.util.List;
