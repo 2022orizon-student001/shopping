@@ -10,7 +10,7 @@ public class CartBean {
 	public CartBean() {
 	}
 
-	public List<ItemBean> getItems();{
+	public List<ItemBean> getItems(){
 		return items;
 		}
 	
@@ -40,7 +40,7 @@ public class CartBean {
 		}
 		recalcTotal();
 	}
-	public int getTotal();{		
+	public int getTotal(){		
 	return total;
 		}
 	private void recalcTotal() {

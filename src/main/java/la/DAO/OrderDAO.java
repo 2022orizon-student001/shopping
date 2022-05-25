@@ -30,7 +30,7 @@ public class OrderDAO {
 			throw new DAOException("JDBCドライバの登録に失敗しました。");
 		}
 	}
-	public int saveOrder(CustomerBean customer, CartBean cart)throws DAOExceotion{
+	public int saveOrder(CustomerBean customer, CartBean cart)throws DAOException {
 		int customerNumber = 0;
 		String sql="select nextval('customer_code_seq')";
 		
@@ -62,7 +62,8 @@ public class OrderDAO {
 			
 				st.executeUpdate();
 				}
-	}catch(SQLException e) {
+		
+	} catch (SQLException e) {
 					e.printStackTrace();
 					throw new DAOException("レコードの操作に失敗しました。");
 				}

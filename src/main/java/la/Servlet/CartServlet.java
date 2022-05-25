@@ -3,17 +3,17 @@ package la.Servlet;
 import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import la.bean.CartBean;
-import la.bean.ItemBean;
+
 import la.DAO.DAOException;
 import la.DAO.ItemDAO;
+import la.bean.CartBean;
+import la.bean.ItemBean;
 /**
  * Servlet implementation class CartServlet
  */
@@ -32,7 +32,7 @@ public class CartServlet extends HttpServlet {
 			int quantity = Integer.parseInt(request.getParameter("quantity"));
 			HttpSession session = request.getSession(true);
 			CartBean cart = (CartBean)session.getAttribute("cart");
-		}
+		
 			
 
 		if (cart == null) {
@@ -41,7 +41,7 @@ public class CartServlet extends HttpServlet {
 		}
 		
 		ItemDAO dao = new ItemDAO();
-		ItemBean bean = dao.findMyPrimaryKey(code);
+		ItemBean bean = dao.findByPrimaryKey(code);
 		
 		cart.addCart(bean, quantity);
 		gotoPage(request, response, "/cart.jsp");
