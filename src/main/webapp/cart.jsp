@@ -19,7 +19,7 @@
 <c:if test="${not empty cart.items}">
 <table border="1">
 <tr><td>商品番号</td><td>商品名</td><td>単価（税込）</td>
-<tr><td>個数</td><td>小計</td><td>削除</td></tr>
+<td>個数</td><td>小計</td><td>削除</td>
 
 <c:forEach items="${cart.items}" var="item">
 <tr>
