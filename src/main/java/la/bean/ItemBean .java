@@ -52,4 +52,12 @@ public class ItemBean implements Serializable {
 		this.quantity = quantity;
 	}
 
+	public ItemBean(int code, String name, int price) {
+		super();
+		this.code = code;
+		this.name = name;
+		this.price = price;
+	}
+	
+
 }

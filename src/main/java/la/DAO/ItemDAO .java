@@ -1,4 +1,4 @@
-package la.DAO;
+package la.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -10,7 +10,7 @@ import java.util.List;
 
 import la.bean.CategoryBean;
 import la.bean.ItemBean;
-import la.DAO.DAOException;
+import la.servlet.DAOException;
 
  public class ItemDAO {
 
@@ -47,8 +47,8 @@ try (
 		
 	}
 	return list;
-} catch (SQLExeception e) {
-	e.printstackTrace();
+} catch (SQLException e) {
+	e.printStackTrace();
 	throw new DAOException("レコード取得に失敗しました。");
 }
 }
@@ -58,14 +58,14 @@ public List<ItemBean> findByCategory(int categoryCode)throws DAOException{
 	try(
 			Connection con = DriverManager.getConnection(url, user, pass);
 			PreparedStatement st = con.prepareStatement(sql);) {
-		st.seetInt(1, categoryCode);
+		st.setInt(1, categoryCode);
 		try(ResultSet rs = st.executeQuery();) {
 			List<ItemBean> list = new ArrayList<ItemBean>();
 			while (rs.next()) {
 				int code = rs.getInt("code");
 				String name = rs.getString("name");
 				int price = rs.getInt("price");
-				ItemBean bean = new ItemBean(code, name, price);
+				ItemBean bean = new ItemBean(code,name, price);
 				list.add(bean);
 				
 			}
@@ -74,9 +74,9 @@ public List<ItemBean> findByCategory(int categoryCode)throws DAOException{
 			e.printStackTrace();
 			throw new DAOException("レコードの取得に失敗しました。");
 		}
-	}catch(SQLExecption e) {
+	}catch(SQLException e) {
 		e.printStackTrace();
-		throw new DAOException("レコードの取得に失敗しました。")；
+		throw new DAOException("レコードの取得に失敗しました。");
 	}
 }
 public ItemBean findByPrimaryKey(int key) throws DAOException{
@@ -86,7 +86,7 @@ public ItemBean findByPrimaryKey(int key) throws DAOException{
 			PreparedStatement st = con.prepareStatement(sql);){
 		st.setInt(1,  key);
 		
-		try(result rs = st.executeQuery();){
+		try(ResultSet rs = st.executeQuery();){
 			if(rs.next()) {
 				int code = rs.getInt("code");
 				String name = rs.getString("name");
@@ -100,6 +100,9 @@ public ItemBean findByPrimaryKey(int key) throws DAOException{
 			e.printStackTrace();
 			throw new DAOException("レコードの取得に失敗しました。");
 		}
+		}catch (SQLException e) {
+			e.printStackTrace();
+			throw new DAOException("レコードの取得に失敗しました");
 		}
 	}
 }
