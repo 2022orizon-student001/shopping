@@ -3,7 +3,6 @@ package la.Servlet;
 import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,10 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import la.DAO.DAOException;
+import la.DAO.OrderDAO;
 import la.bean.CartBean;
 import la.bean.CustomerBean;
-import la.DAO.OrderDAO;
-import la.DAO.DAOException;
 /**
  * Servlet implementation class CartServlet
  */
@@ -55,7 +54,7 @@ public class OrderServlet extends HttpServlet {
 	try {
 		String action = request.getParameter("action");
 		if (action==null||action.length()==0 || action.equals("input_customer")) {
-		gotoPage(response, request, "/customerInfo.jsp");	
+		gotoPage(request, response, "/customerInfo.jsp");	
 		}
 		else if (action.equals("confirm")){
 			
@@ -66,7 +65,7 @@ public class OrderServlet extends HttpServlet {
 			bean.setTel(request.getParameter("Tel"));
 			bean.setEmail(request.getParameter("Emai"));
 			session.setAttribute("customer", bean);
-			gotoPage(response, request, "/customerInfo.jsp");							
+			gotoPage(request, response, "/customerInfo.jsp");							
 		}
 		else if (action.equals("order")) {
 			CustomerBean customer =(CustomerBean)session.getAttribute("customer");
@@ -76,7 +75,7 @@ public class OrderServlet extends HttpServlet {
 				return;
 				
 			}
-			OrderDAO order new OrderDAO();
+			OrderDAO order = new OrderDAO();
 			int orderNumber = order.saveOrder(customer, cart);
 			session.removeAttribute("cart");
 			session.removeAttribute("customer");
@@ -89,7 +88,7 @@ public class OrderServlet extends HttpServlet {
 			gotoPage(request, response, "/errInternal.jsp");
 		}
 	}catch(DAOException e) {
-		e.print
+		e.printStackTrace();
 			request.setAttribute("message", "内部エラーが発生しました。");
 			gotoPage(request, response, "/errInternal.jsp");
 		}

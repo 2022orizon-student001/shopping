@@ -8,7 +8,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
-
 import la.bean.CartBean;
 import la.bean.CustomerBean;
 import la.bean.ItemBean;
@@ -30,7 +29,7 @@ public class OrderDAO {
 			throw new DAOException("JDBCドライバの登録に失敗しました。");
 		}
 	}
-	public int saveOrder(CustomerBean customer, CartBean cart)throws DAOException {
+	public int saveOrder(CustomerBean customer, CartBean cart)throws DAOException{
 		int customerNumber = 0;
 		String sql="select nextval('customer_code_seq')";
 		
@@ -61,8 +60,6 @@ public class OrderDAO {
 				st.setString(5, customer.getEmail());
 			
 				st.executeUpdate();
-				}
-		
 	} catch (SQLException e) {
 					e.printStackTrace();
 					throw new DAOException("レコードの操作に失敗しました。");
@@ -104,7 +101,7 @@ public class OrderDAO {
 			List<ItemBean> items= cart.getItems();
 			for (ItemBean item: items) {
 				st.setInt(1, orderNumber);
-				st.setInt(2, item.getcode);
+				st.setInt(2, item.getCode());
 				st.setInt(3, item.getQuantity());
 				st.executeLargeUpdate();
 				
