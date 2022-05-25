@@ -34,13 +34,12 @@ public class OrderServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-	request.setCharacterEncoding("UTF-8");
+		
 	HttpSession session = request.getSession(false);
 	
 	if(session == null ) {
 		request.setAttribute("message", "セッションが切れています。もう一度トップページより操作してください。");
-		gotoPage(request,response, "?errInternl.jsp");
+		gotoPage(request,response, "errInternl.jsp");
 		return;
 	}
 	CartBean cart =(CartBean) session.getAttribute("cart");
@@ -61,11 +60,11 @@ public class OrderServlet extends HttpServlet {
 		
 			CustomerBean bean = new CustomerBean();
 			bean.setName(request.getParameter("name"));
-			bean.setAddress(request.getParameter("Address"));
-			bean.setTel(request.getParameter("Tel"));
-			bean.setEmail(request.getParameter("Emai"));
+			bean.setAddress(request.getParameter("address"));
+			bean.setTel(request.getParameter("tel"));
+			bean.setEmail(request.getParameter("email"));
 			session.setAttribute("customer", bean);
-			gotoPage(request, response, "/customerInfo.jsp");							
+			gotoPage(request, response, "/confirm.jsp");							
 		}
 		else if (action.equals("order")) {
 			CustomerBean customer =(CustomerBean)session.getAttribute("customer");

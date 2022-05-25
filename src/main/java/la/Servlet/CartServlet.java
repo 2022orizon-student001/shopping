@@ -22,7 +22,8 @@ public class CartServlet extends HttpServlet {
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	try {
+		
+		try {
 		String action = request.getParameter("action");
 		if(action == null || action.length() == 0 || action.equals("show")){
 			gotoPage(request, response, "/cart.jsp");

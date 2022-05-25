@@ -34,6 +34,8 @@ public class ShowItemServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		
 		try {
 			String action = request.getParameter("action");
 			if (action == null || action.length() == 0 || action.equals("top")) {
