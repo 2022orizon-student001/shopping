@@ -27,11 +27,11 @@
 	<td align="center">${item.name}</td>
 	<td align="right">${item.price}</td>
 	<td align="right">${item.quantity}</td>
-	<td align="right">${item.price * item quantity}円</td>
+	<td align="right">${item.price * item.quantity}円</td>
 <td>
 
 <form action="/shopping/CartServlet?action=delete" method="post">
-	<input type="hidden" name="item_code" value="${item,code}">
+	<input type="hidden" name="item_code" value="${item.code}">
 	<input type="submit" value="削除">
 </form>
 </td>

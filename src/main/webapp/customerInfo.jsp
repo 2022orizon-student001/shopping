@@ -16,13 +16,13 @@
 <table border="1">
 
 <tr><td>商品番号</td><td>商品名</td><td>単価（税込み）</td><td>個数</td><td>小計</td></tr>
-<c:forEach items="${cart.items} var="item">
+<c:forEach items="${cart.items}" var="item">
 <tr>
 <td align ="center">${item.code}</td> 
 <td align ="center">${item.name}</td> 
 <td align ="right">${item.price}円</td> 
 <td align ="right">${item.quantity}</td>
-<td align ="right">${item.price*item.quantity}円</td>
+<td align ="right">${item.price * item.quantity}円</td>
 </tr>
 </c:forEach>
 <tr><td align ="right" colspan="6">総計:${cart.total}円</td>

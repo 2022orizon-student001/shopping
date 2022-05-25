@@ -14,7 +14,7 @@
 
 <c:forEach items="${items }" var="item">
 	<form action="/shopping/CartServlet?action=add" method="post">
-		<input type= "hidden" name = "item_code" values="${item.code}">
+		<input type= "hidden" name = "item_code" value="${item.code}">
 		商品番号：<b>${item.code}</b><br> 
 		商品名：<b>${item.name}</b><br>
 		価格（税込）：<b>${item.price}円</b><br>
