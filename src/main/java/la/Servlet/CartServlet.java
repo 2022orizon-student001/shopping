@@ -1,4 +1,4 @@
-package la.Cart;
+package la.Servlet;
 
 import java.io.IOException;
 
@@ -10,10 +10,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import la.Cart.CartBean;
+import la.bean.CartBean;
 import la.bean.ItemBean;
-import la.dao.DAOException;
-import la.dao.itemDAO;
+import la.Servlet.DAOException;
+import la.DAO.itemDAO;
 /**
  * Servlet implementation class CartServlet
  */
