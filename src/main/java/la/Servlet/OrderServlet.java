@@ -18,24 +18,33 @@ import la.bean.CustomerBean;
  * Servlet implementation class CartServlet
  */
 @WebServlet("/OrderServlet")
-
+/*@WebServlet(name = "OrderServlet", urlPatterns = { "/OrderServlet" })
 public class OrderServlet extends HttpServlet {
-	
-    
-
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+   /* public OrderServlet() {
+        super();
+        // TODO Auto-generated constructor stub
+    */
+    public class OrderServlet extends HttpServlet {
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
+		request.setCharacterEncoding("utf-8");
 	HttpSession session = request.getSession(false);
 	
 	if(session == null ) {
 		request.setAttribute("message", "セッションが切れています。もう一度トップページより操作してください。");
-		gotoPage(request,response, "errInternl.jsp");
+		gotoPage(request,response, "/errInternl.jsp");
 		return;
 	}
 	CartBean cart =(CartBean) session.getAttribute("cart");
+	CustomerBean customer =(CustomerBean)session.getAttribute("customer");
 	
 	if (cart ==null) {request.setAttribute("message", "正しく操作してください。");
 	gotoPage(request,response, "/errInternl.jsp");
@@ -46,36 +55,50 @@ throws ServletException, IOException {
 	try {
 		String action = request.getParameter("action");
 		if (action==null||action.length()==0 || action.equals("input_customer")) {
-		gotoPage(request, response, "/customerInfo.jsp");	
+			// CustomerBean customer =(CustomerBean)session.getAttribute("customer");
+			if (customer != null) {
+			gotoPage(request, response, "/confirm.jsp");	
+			}else {
+				gotoPage(request, response, "/customerInfo.jsp");	
+			}
 		}
+	/*	else if (action.equals("login")) {
+			String name =request.getParameter("name");
+			String password = request.getParameter("password");
+			// CustomerDAO dao = new CustomerDAO();
+			// List<CustomerBean =dao.logIn(name, password);
+			CustomerBean bean = new CustomerBean();
+			 bean = CustomerBean.logIn(name, password);
+			 request.setAttribute("customer",bean);
+			
+		}
+		else if (action.equals("registration")) {
+			CustomerBean bean = new CustomerBean();
+			bean.setName(request.getParameter("name"));
+			bean.setAddress(request.getParameter("address"));
+			bean.setTel(request.getParameter("tel"));
+			bean.setEmail(request.getParameter("email"));
+			bean.setPassword(request.getParameter("password"));
+			session.setAttribute("customer", bean);
+			gotoPage(request,response,"/top.jsp");
+		}*/
 		else if (action.equals("confirm")){
+			
+		
 			CustomerBean bean = new CustomerBean();
 			bean.setName(request.getParameter("name"));
 			bean.setAddress(request.getParameter("address"));
 			bean.setTel(request.getParameter("tel"));
 			bean.setEmail(request.getParameter("email"));
 			session.setAttribute("customer", bean);
-			if (bean.getName()=="" || bean.getAddress()=="" || bean.getTel()=="" || bean.getEmail()=="") {
-				request.setAttribute("message", "全情報をしてください");
-				gotoPage(request, response, "/errInternal.jsp");
-				return;
-			}
-			gotoPage(request, response, "/confirm.jsp");	
-			
+			gotoPage(request, response, "/confirmGuest.jsp");							
 		}
-			
-			
-				
-		else if (action.equals("order")) 
-		
-{
-			
-			CustomerBean customer =(CustomerBean)session.getAttribute("customer");
+		else if (action.equals("order")) {
+			// CustomerBean customer =(CustomerBean)session.getAttribute("customer");
 			if (customer == null) {
 				request.setAttribute("message", "正しく操作してください");
 				gotoPage(request, response, "/errInternal.jsp");
 				return;
-			
 				
 			}
 			OrderDAO order = new OrderDAO();
@@ -95,10 +118,6 @@ throws ServletException, IOException {
 			request.setAttribute("message", "内部エラーが発生しました。");
 			gotoPage(request, response, "/errInternal.jsp");
 		}
-	}
-	private Object getName() {
-		// TODO 自動生成されたメソッド・スタブ
-		return null;
 	}
 	private void gotoPage(HttpServletRequest request, HttpServletResponse response, String page)throws ServletException, IOException {
 	RequestDispatcher rd = request.getRequestDispatcher(page);

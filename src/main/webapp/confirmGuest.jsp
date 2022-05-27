@@ -24,7 +24,6 @@
 <td>単価（税込）</td>
 <td>個数</td>
 <td>小計</td>
-<td>割引後の小計</td>
 </tr>
 
 <c:forEach items="${cart.items}" var="item">
@@ -34,10 +33,9 @@
 <td align="right">${item.price}円</td>
 <td align="right">${item.quantity}</td>
 <td align="right">${item.price * item.quantity}円</td>
-<td align ="right">${item.price * item.quantity * 0.8}円</td>
 </tr>
 </c:forEach>
-<tr><td align="right" colspan="6">総計:${cart.total * 0.8}円</td></tr>
+<tr><td align="right" colspan="6">総計:${cart.total}円</td></tr>
 </table>
 
 <h3>お客様情報</h3>
