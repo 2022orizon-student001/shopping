@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
    
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<link rel="stylesheet" href="style.css" type="text/css">
 
 <!DOCTYPE html>
 <html>
@@ -17,7 +17,8 @@
   
 .name{
 background-color:rgba(255,255,255,0.8);
-width: 350px;}
+width: 350px;
+position:relative; top:50px; left:250px}
 </style>
 </head>
 <body>
@@ -41,7 +42,7 @@ width: 350px;}
 <tr><td align ="right" colspan="6">総計:${cart.total}円</td>
 </table>
 
-<div class="name"><h3>お客様情報を入力してください</h3></div>
+<div class="name"><h3 style="text-align:centere;">お客様情報を入力してください</h3></div>
 <form action="/shopping/OrderServlet?action=confirm" method = "post">
 <table border="1">
 <tr>
@@ -50,8 +51,10 @@ width: 350px;}
 <tr><td>電話番号</td><td><input type="text" name ="tel"></td></tr>
 <tr><td>e-mail</td><td><input type="text" name ="email"></td></tr>
 </table>
+<div position:absolute; top:50px;>
 <input type="submit" value="確認画面へ" class="button">
 </form>
+</div>
 </c:if>
 
 </body>

@@ -8,6 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Welcome shopping!</title>
+<style>background-color:white;</style>
 </head>
 <body>
 

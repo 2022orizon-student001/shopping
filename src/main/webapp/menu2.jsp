@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<link rel="stylesheet" href="styleCart.css" type="text/css">
+
 <html>
 <head>
 <style>
@@ -75,7 +75,7 @@ width: 100% auto;}
 " href ="/shopping/LogIn.jsp">ログイン</a></li>
 
 <li><a  style="margin:0; border:solid 1px black;padding : 2px 20px;font-weight: bold;
-" href="/shopping/ShowItemServlet?action=show">カートを見る</a></li>
+" href="/shopping/CartServlet?action=show">カートを見る</a></li>
 <br>
 
 <ul style="position:absolute; top:35px;margin:0;; text-align:center; background-color:white; height:60px;width:100%">

@@ -12,10 +12,10 @@
 
 <jsp:include page="/menu2.jsp" />
 
-<div class="login">
+<div class="login" style="text-align:center; padding:10px">
 <form action="/shopping/RegistrationServlet?action=login" method="post">
-お名前:<input type="text" name="name"><br>
-パスワード:<input type="text" name="password"><br>
+お名前:<input type="text" size=14 name="name"><br>
+パスワード:<input type="text" size=10 name="password"><br>
 <input type="submit" value="ログイン" class=button1>
 </div>
 </form>
