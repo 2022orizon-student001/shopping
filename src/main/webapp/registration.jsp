@@ -2,60 +2,29 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
+
 <html>
 <head>
 <meta charset="UTF-8">
 <title>新規会員登録</title>
-<style>
-table{	
-margin: 20px;
-  width: 75%;
-  border-collapse:collapse;
-font-family:"MS Pゴシック",sans-serif;
-font-size: 15;
-table-layout: fixed;
- background-color: rgba(255,255,255,0.8);/*表の枠線*/
- }
-
- 
-/*枠線の中の色*/
-}
-table td{
-  text-align: center;
-  border-left: 1px solid #000000;
-  border-bottom: 1px solid #000000;
-  border-top:1px solid #000000;
-
-  width: 25%;
-  padding: 10px 5px 10px;
-  
-  position: absolute; /* 今の位置を基準 */
-top: 80px; /* 上から10px */
-left: 20px; /* 左から20px */
-
-/*表の太さとか位置とか*/
-}
-
-}
-</style>
+<link rel="stylesheet" href="styleCart.css" type="text/css">
 </head>
 <body>
 <jsp:include page="/menu2.jsp" />
 
-
+<div  style="position:relative; top:100px;">
+<h3 >会員情報</h3>
 <form action="/shopping/RegistrationServlet?action=registration" method = "post">
-<table border="1">
-<tr>
-<td>お名前</td><td><input type="text" name ="name"></tr>
-<tr><td>住所</td><td><input type="text" name ="address"></td></tr>
-<tr><td>電話番号</td><td><input type="text" name ="tel"></td></tr>
-<tr><td>e-mail</td><td><input type="text" name ="email"></td></tr>
-<tr><td>パスワード</td><td><input type="text" name ="password"></td></tr>
-</table>
-<div style="position:relative;">
-<input type="submit" value="登録">
-</div>
+お名前:<input type="text" name ="name" size=20  placeholder="※必須"><br>
+住所:<input type="text" name ="address"size=40  placeholder="※必須	"><br>
+電話番号:<input type="text" name ="tel" size=20  placeholder="※必須"><br>
+e-mail:<input type="text" name ="email" size=20  placeholder="※必須"><br>
+パスワード:<input type="text" name ="password" size=20 placeholder="※必須"><br>
+<h4 >
+<input type="submit"  value="登録" class="button1">
+</h4>
 </form>
+</div>
 
 </body>
 </html>

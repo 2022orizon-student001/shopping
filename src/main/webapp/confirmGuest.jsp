@@ -55,7 +55,7 @@
 <td>e-mail</td><td>${customer.email}</td>
 </tr>
 </table><br>
-<input type="submit" value="この内容で注文" class=button>
+<input type="submit" value="この内容で注文" class=button1>
 </form>
 
 </c:if>

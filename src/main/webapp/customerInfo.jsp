@@ -2,31 +2,23 @@
     pageEncoding="UTF-8"%>
    
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<link rel="stylesheet" href="style.css" type="text/css">
+
 
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<style>
- table {
+<link rel="stylesheet" href="styleCart.css" type="text/css">
 
-
-}
-  
-.name{
-background-color:rgba(255,255,255,0.8);
-width: 350px;
-position:relative; top:50px; left:250px}
-</style>
 </head>
 <body>
 
 <jsp:include page="/menu2.jsp" /><br>
+<div style="position:relative; top:100px; width: 90%;">
 <h3>ご注文商品</h3>
 <c:if test="${not empty cart.items}">
-<table border="1" position:absolute; top:30px >
+<table border="1" >
 
 <tr><td>商品番号</td><td>商品名</td><td>単価（税込み）</td><td>個数</td><td>小計</td></tr>
 <c:forEach items="${cart.items}" var="item">
@@ -41,21 +33,22 @@ position:relative; top:50px; left:250px}
 </c:forEach>
 <tr><td align ="right" colspan="6">総計:${cart.total}円</td>
 </table>
-
-<div class="name"><h3 style="text-align:centere;">お客様情報を入力してください</h3></div>
+</c:if>
+</div>
+<div style="position:relative; top:100px;"> 
+<h3 >お客様情報を入力してください</h3>
+<br>
 <form action="/shopping/OrderServlet?action=confirm" method = "post">
-<table border="1">
-<tr>
-<td>お名前</td><td><input type="text" name ="name"></tr>
-<tr><td>住所</td><td><input type="text" name ="address"></td></tr>
-<tr><td>電話番号</td><td><input type="text" name ="tel"></td></tr>
-<tr><td>e-mail</td><td><input type="text" name ="email"></td></tr>
-</table>
-<div position:absolute; top:50px;>
-<input type="submit" value="確認画面へ" class="button">
+お名前:<input type="text" name ="name" size=20  placeholder="※必須"><br>
+住所:<input type="text" name ="address"size=40  placeholder="※必須	"><br>
+電話番号:<input type="text" name ="tel" size=20  placeholder="※必須"><br>
+e-mail:<input type="text" name ="email" size=20  placeholder="※必須"><br>
+<h4 >
+<input type="submit"  value="登録" class="button1">
+</h4>
 </form>
 </div>
-</c:if>
+
 
 </body>
 </html>

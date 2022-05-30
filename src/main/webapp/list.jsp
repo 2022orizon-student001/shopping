@@ -14,11 +14,13 @@
 <body>
 
 <jsp:include page="/menu2.jsp" />
-<h3>商品一覧</h3>
+
+<h3 style="position:relative;top:120px;">商品一覧</h3>
 
 <c:forEach items="${items }" var="item">
 	<form action="/shopping/CartServlet?action=add" method="post">
-		<div><input type= "hidden" name = "item_code" value="${item.code}">
+		<div style="position:relative;top:100px;">
+		<input type= "hidden" name = "item_code" value="${item.code}">
 		商品番号：<b>${item.code}</b><br> 
 		商品名：<b>${item.name}</b><br>
 		価格（税込）：<b>${item.price}円</b><br>
@@ -30,8 +32,8 @@
 		<option value="4">4
 		<option value="5">5
 		</select>
-		個<br>
-		<input type ="submit" value="カートに追加" class=button2></div>
+		個<br><br>
+		<input type ="submit" value="カートに追加" class=button1></div>
 	</form>
 </c:forEach>
 

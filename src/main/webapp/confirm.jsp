@@ -2,46 +2,23 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="style.css" type="text/css">
-<style>
-body {
-	text-align: center;
-}
-
-table {
-	position: absolute;
-	left: 00px;
-	background-color: white;
-	opacity: 0, 5;
-	border: 1px solid black;
-	border-collapse: collapse;
-	width: 400;
-	height: 50%;
-	"
-}
-
-table td {
-	padding: 10px;
-	30
-	px;
-}
-</style>
+<link rel="stylesheet" href="styleCart.css" type="text/css">
 </head>
 <body>
 
 	<jsp:include page="/menu2.jsp" /><br>
+	<div style="position:relative; top:100px;">
 	<h3>下記の内容で注文を行いますか?</h3>
-	<h style="background-color: rgba(255,255,255,0.8);/; padding:5px 60;width:100px;">ご注文商品
-	</h3>
+	<h3>ご注文商品</h3>
 
 	<c:if test="${not empty cart.items}">
-		<table border="1">
+		
+			<table>
 			<tr>
 				<td>商品番号</td>
 				<td>商品名</td>
@@ -64,13 +41,12 @@ table td {
 			<tr>
 				<td align="right" colspan="6">総計:${cart.total * 0.8}円</td>
 			</tr>
-		</table>
+			</table>
 
-		<h3 style="background-color: rgba(255,255,255,0.8); padding: 5px 60; width: 100px;">お客様情報</h3>
+		<h3 >お客様情報</h3>
 
 		<form action="/shopping/OrderServlet?action=order" method="post">
-			<table
-				style="background-color: white; border: 1px solid black; border-collapse: collapse; width: 90px;">
+			<table>
 				<tr>
 					<td>お名前</td>
 					<td>${customer.name}</td>
@@ -89,10 +65,9 @@ table td {
 				</tr>
 			</table>
 			<br>
-			<div style="position: relative;">
-				<input type="submit" value="この内容で注文" class=button>
+				<input type="submit" value="この内容で注文" class="button1">
 		</form>
-		</div>
-	</c:if>
+		</c:if>
+	</div>
 </body>
 </html>
