@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<link rel="stylesheet" href="styleCart.css" type="text/css">
+
 
 <!DOCTYPE html>
 <html><head><meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="style.css" type="text/css">
+<link rel="stylesheet" href="styleCart.css" type="text/css">
 <style type="text/css">
 
 </style>
@@ -16,7 +16,7 @@
 <jsp:include page="/menu2.jsp" /><br>
 <h3>下記の内容で注文を行いますか?</h3>
 <h3>ご注文商品</h3>
-
+<div>
 <c:if test="${not empty cart.items}">
 <table border="1">
 <tr><td>商品番号</td>
@@ -59,7 +59,7 @@
 </form>
 
 </c:if>
-
+</div>
 
 </body>
 </html>
